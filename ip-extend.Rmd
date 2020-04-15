@@ -323,6 +323,34 @@ Using `ggplot` & `plotly`, recreate the plot in `assets/divedeep2.html` file!
 
 ```
 
+
+
+
+```{r}
+ df <- workers %>% 
+      filter(major_category == "Service") %>% 
+      group_by(year) %>% 
+      summarise(
+        Female = mean(percent_female),
+        Male = mean(percent_male)
+      ) %>% 
+      ungroup() %>% 
+      pivot_longer(cols = -year) %>% 
+      mutate(text = glue::glue('{name}: {round(value,2)}%'))
+    
+  ggplot(df, aes(year, value, group = name, text = text))+
+      geom_line(aes(color = name))+
+      geom_point(aes(color = name))+
+      facet_wrap(~name, scales = "free_x")
+      
+    
+plot
+```
+
+
+
+
+
 # Plot Publication
 
 ```{r}
