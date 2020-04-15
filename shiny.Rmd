@@ -9,8 +9,8 @@ output:
     toc_float: 
         collapsed: false
     number_sections: false
-    theme: readable
-    highlight: haddock
+    theme: journal
+    highlight: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -892,6 +892,35 @@ dashboardPage(
 
 
 ![](assets/step-add1.png)
+
+## Using [Icons](https://shiny.rstudio.com/reference/shiny/0.14/icon.html)
+
+The default library is [font-awesome](https://fontawesome.com/icons?d=gallery) icon gallery. Example on using icons for sidebar menu:
+
+```{r}
+sidebar <- dashboardSidebar(
+   sidebarMenu(
+       menuItem(
+           text = "Overview",
+           tabName = "overview",
+           icon = icon("chart-bar")
+       ),
+       selectInput(
+           inputId = "selectYear",
+           label = "Select Year:",
+           choices = yearOpt, 
+           selected = yearOpt[1],
+           multiple = T
+       ),
+       menuItem(
+           text = "Source Data",
+           tabName = "sourcedata",
+           icon = icon("table")
+       )
+   )
+)
+```
+
 
 ## Using HTML Tags
 You can also [customize your UI with HTML](https://shiny.rstudio.com/articles/html-tags.html)
