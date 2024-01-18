@@ -1,3 +1,4 @@
 *.html linguist-detectable=false
 assets/* linguist-detectable=false
+workers-dash/assets/* linguist-detectable=false
 
